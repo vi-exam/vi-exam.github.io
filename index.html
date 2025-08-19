@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VIEXAM123"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VIEXAM123');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="description" content="ViExam: The first comprehensive evaluation of Vision Language Models on Vietnamese multimodal exam questions">
+  <meta name="keywords" content="VLM, Vision Language Models, Vietnamese, Multimodal, Education, Benchmark">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ViExam: VLMs vs Humans on Vietnamese Exams</title>
+  <link rel="icon" href="static/icons/vietnam-flag.png" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- =================== HERO SECTION (AFFILIATION CLEANED) =================== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="has-text-centered">
+        
+        <!-- Title with inline icon -->
+        <h1 class="title">
+          ViExam: Are Vision Language Models Better than Humans on Vietnamese Multimodal Exam Questions?
+          <img src="images/icon.png" alt="ViExam Project Icon" class="title-icon">
+        </h1>
+        
+        <!-- Authors (đã xóa số 1) -->
+        <div class="is-size-4 publication-authors">
+          <span class="author-block">
+            <a href="https://www.linkedin.com/in/dang-thi-tuong-vy-00a357278/" target="_blank">Vy Tuong Dang</a>,
+          </span>
+          <span class="author-block">
+            <a href="https://anvo25.github.io/" target="_blank">An Vo</a>,
+          </span>
+          <span class="author-block">
+            <a href="https://www.linkedin.com/in/quang-tau-a708b4238/" target="_blank">Quang Tau</a>,
+          </span>
+          <span class="author-block">
+            <a href="https://www.resl.kaist.ac.kr/members/master-student#h.fiaa4al7sz8u" target="_blank">Duc Dm</a>,
+          </span>
+          <span class="author-block">
+            <a href="https://www.resl.kaist.ac.kr/members/director" target="_blank">Daeyoung Kim</a>
+          </span>
+        </div>
+        
+        <!-- Affiliation (đã xóa số 1) -->
+        <div class="is-size-5 publication-authors has-text-centered">
+          <span class="author-block">KAIST</span>
+        </div>
+        
+        <!-- Buttons -->
+        <div class="mt-4 has-text-centered">
+          <div class="buttons is-centered">
+            <a href="#" class="button is-rounded is-dark" target="_blank" rel="noopener noreferrer">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>Paper (Coming Soon)</span>
+            </a>
+            <a href="https://github.com/TuongVy20522176/ViExam" class="button is-rounded is-dark" target="_blank" rel="noopener noreferrer">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code</span>
+            </a>
+            <a href="https://huggingface.co/datasets/anvo25/viexam" class="button is-rounded is-dark" target="_blank" rel="noopener noreferrer">
+              <span class="icon"><i class="fas fa-database"></i></span>
+              <span>Dataset</span>
+            </a>
+            <br>
+            <a href="#example-gallery-section" class="button is-rounded is-examples">
+                <span class="icon"><i class="fas fa-graduation-cap"></i></span>
+                <span>Explore Exam Questions</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FINAL POLISHED TLDR (Centered Header) =================== -->
+<section class="section tldr-section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-two-thirds">
+        <div class="tldr-card-single">
+          <!-- Thêm class has-text-centered để căn giữa badge -->
+          <div class="tldr-header has-text-centered">
+            <span class="tldr-badge">
+              <!-- Đổi icon thành thumbtack -->
+              <i class="fas fa-thumbtack"></i> TLDR
+            </span>
+          </div>
+          <div class="tldr-content">
+            <p>
+              We evaluate VLMs on Vietnamese multimodal exam questions and find they significantly underperform humans, achieving only <strong>57.74% accuracy</strong>. We introduce <strong>ViExam</strong>, the first comprehensive Vietnamese multimodal benchmark with <strong>2,548 genuinely visual questions</strong> across 7 academic domains.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FINAL TEASER SECTION (WIDER TEXT FRAME) =================== -->
+<section class="section">
+  <div class="container">
+
+    <!-- KHỐI VĂN BẢN -->
+    <div class="columns is-centered">
+      <!-- THAY ĐỔI CHÍNH Ở ĐÂY: is-four-fifths -> is-full-width -->
+      <div class="column is-full-width">
+        <div class="abstract-card">
+          <div class="abstract-header-clean">
+            <h2 class="abstract-title-clean">
+              <i class="fas fa-microscope"></i>
+              Overview
+            </h2>
+          </div>
+          <div class="abstract-text-clean">
+            <p>
+              Vietnamese high school students regularly face complex diagram-based questions in their graduation exams, from physics problems involving electrical circuits and mechanical waves, function tables and diagrams in mathematics, to chemistry questions with molecular structures and Vietnamese explanations. How do <span class="term-highlight">SOTA VLMs</span> handle these problems? This question drives our research.
+            </p>
+            <p>
+              <span class="term-highlight">Vision Language Models (VLMs)</span> have achieved remarkable success on English benchmarks, but their ability to handle real-world educational content in Vietnamese remains largely unknown. In this work, we introduce the <span class="term-highlight"> ViExam (VLMs)</span>, benchmark to test VLM performance on Vietnamese educational assessments, investigating whether VLMs trained predominantly on English data can handle real-world cross lingual multimodal reasoning.
+            </p>
+            <p>
+              This benchmark contains 2,548 Vietnamese multiple-choice questions spanning seven domains, from mathematics and physics to driving tests and IQ assessments. Each question requires models to simultaneously understand Vietnamese text and interpret visual content, combining information from both text and images to reason and select the correct answer. Additionally, we experiment with various approaches to improve VLM performance on ViExam and provide conclusions for each method.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KHỐI HÌNH ẢNH (Không đổi) -->
+    <div class="full-width-image-container">
+      <img src="images/question_image.jpg" 
+           alt="Example of a Vietnamese multimodal exam question from our ViExam benchmark" 
+           class="teaser-image-clean">
+      <p class="image-caption-clean">
+        Example of a Vietnamese multimodal exam question from ViExam, combining text and visual elements.
+      </p>
+    </div>
+    
+  </div>
+</section>
+
+
+  <!-- PHẦN 7 KEY FINDINGS - CÓ NỀN XANH NHẠT -->
+  <section class="section section-key-findings">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="key-insight">
+            <h3><i class="fas fa-microscope"></i> 7 Key Research Findings</h3>
+            <div class="results-grid">
+              <!-- Finding 1 -->
+              <div class="model-result">
+                <h4><a href="#ocr-table" class="finding-link"><i class="fas fa-eye"></i> Strong OCR, Weak Reasoning</a></h4>
+                <p>All SOTA VLMs achieve strong OCR performance on Vietnamese text (6% CER and 9% WER), confirming that poor performance on ViExam stems from multimodal reasoning challenges, not basic text recognition failures.</p>
+              </div>
+              <!-- Finding 2 -->
+              <div class="model-result">
+                <h4><a href="#performance-table" class="finding-link"><i class="fas fa-chart-line"></i> Domain Performance Gap</a></h4>
+                <p>SOTA VLMs achieve only 57% mean accuracy across 7 domains, with Geography being the most accessible (72%) and Physics the most challenging (44%).</p>
+              </div>
+              <!-- Finding 3 -->
+              <div class="model-result">
+                <h4><a href="#performance-table" class="finding-link"><i class="fas fa-brain"></i> Thinking Models Excel</a></h4>
+                <p>The thinking VLM 03 substantially outperforms non-thinking VLMs (74% vs. 48-59%), suggesting that explicit reasoning is crucial for these tasks.</p>
+              </div>
+              <!-- Finding 4 -->
+              <div class="model-result">
+                <h4><a href="#bias-table" class="finding-link"><i class="fas fa-balance-scale"></i> Choice Bias</a></h4>
+                <p>VLMs exhibit a significant bias toward option B (31%) in incorrect answers, suggesting failures may be partially due to biases in training data, not just reasoning limitations.</p>
+              </div>
+              <!-- Finding 5 -->
+              <div class="model-result">
+                <h4><a href="#gap-table" class="finding-link"><i class="fas fa-image"></i> Multimodal Integration Challenge</a></h4>
+                <p>VLMs perform better on text-only questions (70%) compared to multimodal questions (61%), confirming that integrating visual and textual information is a fundamental challenge.</p>
+              </div>
+              <!-- Finding 6 -->
+              <div class="model-result">
+                <h4><a href="#performance-table" class="finding-link"><i class="fas fa-code-branch"></i> Open-Source Gap</a></h4>
+                <p>Open-source VLMs (27.7%) perform substantially worse than closed-source SOTA VLMs (57%), highlighting a significant challenge for publicly available models in understanding Vietnamese multimodal content.</p>
+              </div>
+              <!-- Finding 7 -->
+              <div class="model-result">
+                <h4><a href="#crosslingual-table" class="finding-link"><i class="fas fa-language"></i> Cross-lingual Effects</a></h4>
+                <p>English prompting improves open-source VLMs (+2.9%) but hurts SOTA VLMs (-1.0%), indicating that language-content mismatches affect different types of models in different ways.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+  
+          <div class="content-section">
+            <h2><i class="fas fa-cogs icon-large"></i> How We Built ViExam: The Data Curation Pipeline</h2>
+            <p>
+              To ensure the quality and validity of our benchmark, we developed a systematic 3-stage pipeline to collect, filter, and classify exam questions. This process was crucial for building a dataset that genuinely tests multimodal reasoning, moving beyond simple text-only questions found in previous benchmarks.
+            </p>
+  
+            <div class="research-figure" style="max-width: 100%;">
+              <img src="images/dataset_generator.jpg" alt="ViExam's 3-stage data curation pipeline">
+              <div class="figure-caption">
+                Our three-stage data curation process: (1) Sourcing raw exam PDFs and converting them to images, (2) an automated pipeline to detect and classify questions, and (3) a final manual verification loop by native Vietnamese speakers.
+              </div>
+            </div>
+  
+            <h4>Our 3-Stage Process Explained:</h4>
+            <p>
+              <strong>Stage 1: Data Sourcing & Conversion.</strong> We began by automatically crawling thousands of exam papers from popular Vietnamese educational websites. Each paper was then converted into high-resolution images, preparing them for analysis.
+            </p>
+            <p>
+              <strong>Stage 2: Automated Classification.</strong> Next, our custom pipeline used OCR to identify individual questions on each page. A specialized analyzer then scanned the content of each question, automatically distinguishing multimodal (image-based) questions from text-only ones.
+            </p>
+            <p>
+              <strong>Stage 3: Human Verification.</strong> Finally, to ensure maximum accuracy, every single question was manually reviewed by a team of native Vietnamese speakers. They used a custom-built tool to correct any classification errors and validate the final dataset.
+            </p>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <h2 class="title"><i class="fas fa-book-open" style="margin-right: 0.8rem;"></i>Dataset at a Glance</h2>
+      <p class="subtitle">Our ViExam benchmark features 2,548 questions across 7 diverse domains.</p>
+    </div>
+
+    <div class="domain-grid">
+      <!-- 1. Mathematics -->
+      <div class="domain-card">
+        <img src="images/math_icon.png" alt="Mathematics Icon" class="domain-icon">
+        <h3 class="domain-name">Mathematics</h3>
+        <p class="domain-count">456 Questions</p>
+      </div>
+      <!-- 2. Physics -->
+      <div class="domain-card">
+        <img src="images/physics_icon.png" alt="Physics Icon" class="domain-icon">
+        <h3 class="domain-name">Physics</h3>
+        <p class="domain-count">361 Questions</p>
+      </div>
+      <!-- 3. Chemistry -->
+      <div class="domain-card">
+        <img src="images/chemistry_icon.png" alt="Chemistry Icon" class="domain-icon">
+        <h3 class="domain-name">Chemistry</h3>
+        <p class="domain-count">302 Questions</p>
+      </div>
+      <!-- 4. Biology -->
+      <div class="domain-card">
+        <img src="images/biology_icon.png" alt="Biology Icon" class="domain-icon">
+        <h3 class="domain-name">Biology</h3>
+        <p class="domain-count">341 Questions</p>
+      </div>
+      <!-- 5. Geography -->
+      <div class="domain-card">
+        <img src="images/geography_icon.png" alt="Geography Icon" class="domain-icon">
+        <h3 class="domain-name">Geography</h3>
+        <p class="domain-count">481 Questions</p>
+      </div>
+      <!-- 6. Driving Test -->
+      <div class="domain-card">
+        <img src="images/driving_icon.png" alt="Driving Test Icon" class="domain-icon">
+        <h3 class="domain-name">Driving Test</h3>
+        <p class="domain-count">367 Questions</p>
+      </div>
+      <!-- 7. IQ Test -->
+      <div class="domain-card">
+        <img src="images/iq_icon.png" alt="IQ Test Icon" class="domain-icon">
+        <h3 class="domain-name">IQ Test</h3>
+        <p class="domain-count">240 Questions</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PHẦN SAMPLE QUESTIONS - PHIÊN BẢN SLIDER -->
+<section class="section" id="example-gallery-section">
+  <div class="container">
+      <div class="gallery-section-slider">
+          <div class="gallery-header-slider">
+              <div class="header-title-slider">
+                  <h2><i class="fas fa-graduation-cap"></i> Sample Exam Questions</h2>
+                  <p>Explore authentic Vietnamese multimodal exam questions from our benchmark.</p>
+              </div>
+              <div class="gallery-navigation">
+                  <button class="gallery-nav prev" id="prev-slide-btn">&lt;</button>
+                  <span class="slide-counter" id="slide-counter">1 / 3</span>
+                  <button class="gallery-nav next" id="next-slide-btn">&gt;</button>
+              </div>
+          </div>
+          
+          <div class="gallery-viewport-slider">
+            <div class="gallery-track-slider" id="gallery-track">
+              <!-- Slides will be injected here by JavaScript -->
+            </div>
+          </div>
+          
+          <div class="gallery-filters" id="gallery-filters">
+            <div class="filters-loading">Loading domains...</div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- 
+PHẦN NHÚNG TRANG WEB CHECK.HTML -->
+<!-- <section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content-section">
+          
+          <div class="has-text-centered">
+            <h2 class="title"><i class="fas fa-tasks" style="margin-right: 0.8rem;"></i>Our Annotation Interface</h2>
+            <p class="subtitle">
+              This is the live interface our team used for the manual verification process (Stage 3), ensuring the quality of every question in the ViExam benchmark.
+            </p>
+          </div>
+
+          <div class="iframe-container">
+            <iframe 
+                src="check.html" 
+                width="100%" 
+                height="800px" 
+                style="border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
+                title="ViExam Question Review System Interface">
+                Your browser does not support iframes.
+            </iframe>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content-section">
+          <h2 id="performance-table"><i class="fas fa-chart-bar icon-large"></i>Overall Performance</h2>
+          
+          <div class="research-table">
+            <div class="comparison-table">
+              <table>
+                <caption>
+                  Closed-source VLMs (57.74%) underperform human average (64.54%) but significantly outperform open-source VLMs (27.70%). Human performance is based on official Vietnamese national high school graduation exam results.
+                </caption>
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>a. Math</th>
+                    <th>b. Physics</th>
+                    <th>c. Chemistry</th>
+                    <th>d. Biology</th>
+                    <th>e. Geography</th>
+                    <th>f. Driving</th>
+                    <th>g. IQ</th>
+                    <th>Mean</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Human Performance -->
+                  <tr style="background-color: #f0fdf4;">
+                    <td><strong>Human (Average)</strong></td>
+                    <td>64.50</td>
+                    <td>66.70</td>
+                    <td>66.80</td>
+                    <td>62.80</td>
+                    <td>71.90</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>66.54</td>
+                  </tr>
+                  <tr style="background-color: #dcfce7;">
+                    <td><strong>Human (Best)</strong></td>
+                    <td>98.00</td>
+                    <td>100.0</td>
+                    <td>100.0</td>
+                    <td>100.0</td>
+                    <td>100.0</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>99.60</td>
+                  </tr>
+                  <!-- Open-source VLMs -->
+                  <tr>
+                    <td colspan="9" class="table-subtitle">Open-source VLMs</td>
+                  </tr>
+                  <tr>
+                    <td>Aya Vision 8B</td>
+                    <td>5.92</td>
+                    <td>2.77</td>
+                    <td>2.98</td>
+                    <td>2.93</td>
+                    <td>2.29</td>
+                    <td>26.98</td>
+                    <td>12.08</td>
+                    <td>7.99</td>
+                  </tr>
+                  <tr>
+                    <td>Aya Vision 32B</td>
+                    <td>7.46</td>
+                    <td>8.86</td>
+                    <td>12.91</td>
+                    <td>17.01</td>
+                    <td>18.71</td>
+                    <td>32.97</td>
+                    <td>23.75</td>
+                    <td>17.38</td>
+                  </tr>
+                  <tr>
+                    <td>Mistral Small 3.2 24B</td>
+                    <td>20.83</td>
+                    <td>12.50</td>
+                    <td>20.86</td>
+                    <td>27.86</td>
+                    <td>27.86</td>
+                    <td>39.51</td>
+                    <td>30.42</td>
+                    <td>25.69</td>
+                  </tr>
+                  <tr>
+                    <td>Mistral Medium 3</td>
+                    <td>25.88</td>
+                    <td>9.42</td>
+                    <td>20.53</td>
+                    <td>26.98</td>
+                    <td>31.19</td>
+                    <td>46.32</td>
+                    <td>31.25</td>
+                    <td>27.37</td>
+                  </tr>
+                  <tr>
+                    <td>Llama 4 Scout</td>
+                    <td>33.55</td>
+                    <td>11.91</td>
+                    <td>23.51</td>
+                    <td>31.09</td>
+                    <td>52.18</td>
+                    <td>49.86</td>
+                    <td>33.75</td>
+                    <td>33.69</td>
+                  </tr>
+                  <tr>
+                    <td>Llama 4 Maverick</td>
+                    <td>27.41</td>
+                    <td>9.42</td>
+                    <td>18.87</td>
+                    <td>21.41</td>
+                    <td>39.50</td>
+                    <td>51.77</td>
+                    <td>24.17</td>
+                    <td>27.51</td>
+                  </tr>
+                  <tr>
+                    <td>Gemma 3 4B</td>
+                    <td>27.41</td>
+                    <td>17.73</td>
+                    <td>21.19</td>
+                    <td>21.99</td>
+                    <td>27.23</td>
+                    <td>40.33</td>
+                    <td>21.67</td>
+                    <td>25.37</td>
+                  </tr>
+                  <tr>
+                    <td>Gemma 3 27B</td>
+                    <td><strong>39.69</strong></td>
+                    <td><strong>29.64</strong></td>
+                    <td>38.41</td>
+                    <td>30.21</td>
+                    <td>47.61</td>
+                    <td>43.87</td>
+                    <td>35.42</td>
+                    <td>37.83</td>
+                  </tr>
+                  <tr>
+                    <td>Qwen 2.5 VL 32B</td>
+                    <td>26.75</td>
+                    <td>10.56</td>
+                    <td>17.88</td>
+                    <td>32.26</td>
+                    <td>51.35</td>
+                    <td><strong>54.50</strong></td>
+                    <td>33.33</td>
+                    <td>32.38</td>
+                  </tr>
+                  <tr>
+                    <td>Qwen 2.5 VL 72B</td>
+                    <td>37.94</td>
+                    <td>19.39</td>
+                    <td><strong>40.40</strong></td>
+                    <td><strong>37.83</strong></td>
+                    <td><strong>60.08</strong></td>
+                    <td>54.22</td>
+                    <td><strong>42.50</strong></td>
+                    <td>41.77</td>
+                  </tr>
+                  <tr style="background-color: #f8fafc;">
+                    <td>Mean</td>
+                    <td>25.29</td>
+                    <td>13.22</td>
+                    <td>21.75</td>
+                    <td>24.96</td>
+                    <td>35.80</td>
+                    <td>44.03</td>
+                    <td>28.83</td>
+                    <td>27.70</td>
+                  </tr>
+                  <!-- Closed-source VLMs -->
+                  <tr>
+                    <td colspan="9" class="table-subtitle">Closed-source/SOTA VLMs</td>
+                  </tr>
+                  <tr>
+                    <td>Gemini 2.5 Flash</td>
+                    <td>48.46</td>
+                    <td>37.12</td>
+                    <td>68.54</td>
+                    <td>61.29</td>
+                    <td>85.03</td>
+                    <td>71.12</td>
+                    <td>47.50</td>
+                    <td>59.87</td>
+                  </tr>
+                  <tr>
+                    <td>Sonnet 4.0</td>
+                    <td>50.66</td>
+                    <td>38.50</td>
+                    <td>53.31</td>
+                    <td>44.87</td>
+                    <td>48.44</td>
+                    <td>58.04</td>
+                    <td>44.17</td>
+                    <td>48.28</td>
+                  </tr>
+                  <tr>
+                    <td>GPT 4.1</td>
+                    <td>41.01</td>
+                    <td>33.80</td>
+                    <td>41.72</td>
+                    <td>43.70</td>
+                    <td>68.81</td>
+                    <td>66.21</td>
+                    <td>45.83</td>
+                    <td>48.73</td>
+                  </tr>
+                  <tr>
+                    <td>o3</td>
+                    <td><strong>85.09</strong></td>
+                    <td><strong>68.98</strong></td>
+                    <td><strong>82.78</strong></td>
+                    <td><strong>67.16</strong></td>
+                    <td><strong>88.98</strong></td>
+                    <td><strong>74.66</strong></td>
+                    <td><strong>50.83</strong></td>
+                    <td><strong>74.07</strong></td>
+                  </tr>
+                  <tr style="background-color: #f8fafc;">
+                    <td>Mean</td>
+                    <td>56.30</td>
+                    <td>44.60</td>
+                    <td>61.59</td>
+                    <td>54.26</td>
+                    <td>72.81</td>
+                    <td>67.51</td>
+                    <td>47.08</td>
+                    <td>57.74</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHẦN KẾT LUẬN MỚI THEO SƠ ĐỒ -->
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content-section">
+          <h2><i class="fas fa-flag-checkered icon-large"></i>Conclusion</h2>
+
+          <!-- Hàng trên: Primary Contribution -->
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="conclusion-box">
+                <h3 class="title is-4">Primary Contribution</h3>
+                <p>This study documents systematic challenges in VLMs' Vietnamese multimodal reasoning through comprehensive evaluation across 7 academic domains, demonstrating that failures stem from multimodal integration rather than basic text recognition limitations.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hàng dưới: Key Results & Core Finding -->
+          <div class="columns is-centered">
+            <!-- Cột Key Results -->
+            <div class="column is-half">
+              <div class="conclusion-box">
+                <h3 class="title is-5">Key Results</h3>
+                <p>SOTA VLMs achieved only 57.74% accuracy on Vietnamese multimodal exam questions while open-source models averaged 27.70%, both underperforming average human test-takers (66.54%).</p>
+              </div>
+            </div>
+            <!-- Cột Core Finding -->
+            <div class="column is-half">
+              <div class="conclusion-box">
+                <h3 class="title is-5">Core Finding</h3>
+                <p>VLMs consistently struggle with Vietnamese multimodal content integration, with thinking models like o3 substantially outperforming non-thinking models (74.07% vs 48.28-59.87%), yet significant gaps remain for global educational equity.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8 has-text-centered">
+        <p class="footer-text">
+          This website is adapted from <a href="https://nerfies.github.io">Nerfies</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
