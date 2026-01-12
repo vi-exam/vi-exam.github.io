@@ -234,6 +234,20 @@ h1, h2, h3, h4, h5 {
     font-size: 1.5rem;
 }
 
+/* ========== ADDITIONAL FINDINGS SECTION (PINK BACKGROUND) ========== */
+.additional-insight {
+  background-color: #fce4ec;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.additional-insight h3 {
+    margin-top: 0;
+    color: #c2185b;
+    font-size: 1.5rem;
+}
+
 .results-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

@@ -15,10 +15,10 @@
   <meta name="keywords" content="VLM, Vision Language Models, Vietnamese, Multimodal, Education, Benchmark">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- SỬA 1: THAY ĐỔI TIÊU ĐỀ TAB -->
-  <title>ViExam</title>
+  <title>VMMU</title>
   
   <!-- SỬA 2: THAY ĐỔI ICON TAB (FAVICON) -->
-  <link rel="icon" href="images/icon.png" type="image/png">
+  <link rel="icon" href="images/conical.png" type="image/png">
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -42,35 +42,42 @@
         
         <!-- Title with inline icon -->
         <h1 class="title">
-          ViExam: Are Vision Language Models Better than Humans on Vietnamese Multimodal Exam Questions?
-          <img src="images/icon.png" alt="ViExam Project Icon" class="title-icon">
+          <img src="images/conical.png" alt="VMMU Project Icon" class="title-icon">
+          VMMU: A Vietnamese Multitask Multimodal Understanding and Reasoning Benchmark
         </h1>
         
         <!-- Authors (đã xóa số 1) -->
         <div class="is-size-4 publication-authors">
           <span class="author-block">
-            <a href="https://www.linkedin.com/in/dang-thi-tuong-vy-00a357278/" target="_blank">Vy Tuong Dang</a><sup>*</sup>,
+            <a href="https://www.linkedin.com/in/dang-thi-tuong-vy-00a357278/" target="_blank">Vy Tuong Dang</a><sup>*1</sup>,
           </span>
           <span class="author-block">
-            <a href="https://anvo25.github.io/" target="_blank">An Vo</a><sup>*</sup>,
+            <a href="https://anvo25.github.io/" target="_blank">An Vo</a><sup>*1,2</sup>,
           </span>
           <span class="author-block">
-            <a href="https://www.linkedin.com/in/quang-tau-a708b4238/" target="_blank">Quang Tau</a>,
+            <a href="https://villacu.github.io/" target="_blank">Emilio Villa-Cueva</a><sup>2</sup>,
           </span>
           <span class="author-block">
-            <a href="https://www.resl.kaist.ac.kr/members/master-student#h.fiaa4al7sz8u" target="_blank">Duc Dm</a>,
+            <a href="https://www.linkedin.com/in/quang-tau-a708b4238/" target="_blank">Quang Tau</a><sup>1</sup>,
           </span>
           <span class="author-block">
-            <a href="https://www.resl.kaist.ac.kr/members/director" target="_blank">Daeyoung Kim</a>
+            <a href="https://www.resl.kaist.ac.kr/members/master-student#h.fiaa4al7sz8u" target="_blank">Duc Dm</a><sup>1</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://mbzuai.ac.ae/study/faculty/thamar-solorio/" target="_blank">Thamar Solorio</a><sup>2</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://www.resl.kaist.ac.kr/members/director" target="_blank">Daeyoung Kim</a><sup>1</sup>
           </span>
         </div>
         <div class="is-size-5">
           <sup>*</sup>Equal contribution
         </div>
-        
+
         <!-- Affiliation (đã xóa số 1) -->
         <div class="is-size-5 publication-authors has-text-centered">
-          <span class="author-block">KAIST</span>
+          <span class="author-block"><sup>1</sup>KAIST</span>
+          <span class="author-block"><sup>2</sup>MBZUAI</span>
         </div>
         
         <!-- Buttons -->
@@ -115,7 +122,7 @@
           </div>
           <div class="tldr-content">
             <p>
-              We evaluate VLMs on Vietnamese multimodal exam questions and find they significantly underperform humans (<strong>57.74%</strong> vs. <strong>66.54%</strong> average accuracy). We introduce <strong>ViExam</strong>, the first comprehensive Vietnamese multimodal benchmark with <strong>2,548 genuinely visual questions</strong> across 7 academic domains.
+              We introduce <strong>VMMU</strong>, a Vietnamese Multitask Multimodal Understanding and Reasoning Benchmark with <strong>2.5k multimodal questions</strong> across <strong>7 tasks</strong>. Despite strong Vietnamese OCR performance, proprietary models achieve only <strong>66% mean accuracy</strong>. Analysis shows the primary sources of failure are <strong>multimodal grounding and reasoning</strong> over text and visual evidence, rather than OCR.
             </p>
           </div>
         </div>
@@ -141,13 +148,13 @@
           </div>
           <div class="abstract-text-clean">
             <p>
-              Vietnamese high school students regularly face complex diagram-based questions in their graduation exams, from physics problems involving electrical circuits and mechanical waves, function tables and diagrams in mathematics, to chemistry questions with molecular structures and Vietnamese explanations. How do <span class="term-highlight">SOTA VLMs</span> handle these problems?
+              <span class="term-highlight">Vision Language Models (VLMs)</span> have made rapid progress on multimodal benchmarks, demonstrating strong performance on complex visual and textual reasoning tasks in English. However, it remains unclear how well these models perform in <span class="term-highlight">low-resource languages</span>, especially when language understanding, visual grounding, and reasoning are all required to complete a task.
             </p>
             <p>
-              <span class="term-highlight">Vision Language Models (VLMs)</span> have achieved remarkable success on English benchmarks, but their ability to handle real-world educational content in Vietnamese remains largely unknown. In this work, we introduce the <span class="term-highlight"> ViExam (VLMs)</span>, benchmark to test VLM performance on Vietnamese educational assessments, investigating whether VLMs trained predominantly on English data can handle real-world cross lingual multimodal reasoning.
+              We introduce <span class="term-highlight">VMMU</span>, a Vietnamese Multitask Multimodal Understanding and Reasoning Benchmark designed to evaluate how vision language models interpret and reason over visual and textual information <span class="term-highlight">beyond English</span>. VMMU consists of <strong>2.5k multimodal questions</strong> across <strong>7 tasks</strong>, covering a diverse range of problem contexts, including <strong>STEM problem solving, data interpretation, rule-governed visual reasoning, and abstract visual reasoning</strong>.
             </p>
             <p>
-              This benchmark contains 2,548 Vietnamese multiple-choice questions spanning seven domains, from mathematics and physics to driving tests and IQ assessments. Each question requires models to simultaneously understand Vietnamese text and interpret visual content, combining information from both text and images to reason and select the correct answer. Additionally, we experiment with various approaches to improve VLM performance on ViExam and provide conclusions for each method.
+              All questions require <span class="term-highlight">genuine multimodal integration</span>, rather than reliance on text-only cues or OCR-based shortcuts. We evaluate a diverse set of state-of-the-art (SOTA) proprietary VLMs on VMMU and find that despite strong Vietnamese OCR performance, proprietary models achieve only <strong>66% mean accuracy</strong>. Further analysis shows that the primary sources of failure are not OCR, but instead <span class="term-highlight">multimodal grounding and reasoning</span> over text and visual evidence.
             </p>
           </div>
         </div>
@@ -174,42 +181,82 @@
       <div class="columns is-centered">
         <div class="column is-full-width">
           <div class="key-insight">
-            <h3><i class="fas fa-microscope"></i> 7 Key Research Findings</h3>
+            <h3><i class="fas fa-microscope"></i> 5 Key Research Findings</h3>
             <div class="results-grid">
               <!-- Finding 1 -->
               <div class="model-result">
-                <h4><a href="#ocr-table" class="finding-link"><i class="fas fa-eye"></i> Strong OCR, Weak Reasoning</a></h4>
-                <p>All SOTA VLMs achieve strong OCR performance on Vietnamese text (6% CER and 9% WER), confirming that poor performance on ViExam stems from multimodal reasoning challenges, not basic text recognition failures.</p>
+                <h4><a href="#performance-table" class="finding-link"><i class="fas fa-chart-line"></i> Proprietary VLMs Score Relatively Low</a></h4>
+                <p>Non-thinking proprietary VLMs achieve only 50-71% accuracy on VMMU, while thinking VLMs perform significantly better at 73-86%. This indicates substantial room for improvement in Vietnamese multimodal understanding.</p>
               </div>
               <!-- Finding 2 -->
               <div class="model-result">
-                <h4><a href="#performance-table" class="finding-link"><i class="fas fa-chart-line"></i> Domain Performance Gap</a></h4>
-                <p>SOTA VLMs achieve only 57% mean accuracy across 7 domains, with Geography being the most accessible (72%) and Physics the most challenging (44%).</p>
+                <h4><a href="#ocr-table" class="finding-link"><i class="fas fa-eye"></i> OCR Is Not the Bottleneck</a></h4>
+                <p>Across 5 proprietary SOTA VLMs, Vietnamese embedded-text transcription is consistently strong (mean BLEU 89.01%, F1 94.30%, CER 6.59%, WER 9.33%). Most remaining errors are attributable to multimodal grounding and downstream reasoning, not OCR failures.</p>
               </div>
               <!-- Finding 3 -->
               <div class="model-result">
-                <h4><a href="#performance-table" class="finding-link"><i class="fas fa-brain"></i> Thinking Models Excel</a></h4>
-                <p>The thinking VLM 03 substantially outperforms non-thinking VLMs (74% vs. 48-59%), suggesting that explicit reasoning is crucial for these tasks.</p>
+                <h4><a href="#performance-table" class="finding-link"><i class="fas fa-image"></i> Disentangling Text from Visual Evidence Improves Performance</a></h4>
+                <p>When the question and options are given as text instead of being rendered within the image (Split-MM), accuracy increases for every model (+6 percentage points on average), showing that separating text from visual evidence reduces interference and improves multimodal reasoning.</p>
               </div>
               <!-- Finding 4 -->
               <div class="model-result">
-                <h4><a href="#bias-table" class="finding-link"><i class="fas fa-balance-scale"></i> Choice Bias</a></h4>
-                <p>VLMs exhibit a significant bias toward option B (31%) in incorrect answers, suggesting failures may be partially due to biases in training data, not just reasoning limitations.</p>
+                <h4><a href="#crosslingual-table" class="finding-link"><i class="fas fa-language"></i> English Translation Does Not Help</a></h4>
+                <p>Translating the Vietnamese text into English consistently reduces accuracy for all models (-2 percentage points on average). This suggests that Vietnamese language understanding is not the primary bottleneck, and translation introduces mismatches that degrade grounded multimodal reasoning.</p>
               </div>
               <!-- Finding 5 -->
               <div class="model-result">
-                <h4><a href="#gap-table" class="finding-link"><i class="fas fa-image"></i> Multimodal Integration Challenge</a></h4>
-                <p>VLMs perform better on text-only questions (70%) compared to multimodal questions (61%), confirming that integrating visual and textual information is a fundamental challenge.</p>
+                <h4><a href="#performance-table" class="finding-link"><i class="fas fa-database"></i> Removing Visual Evidence Reveals Possible Reliance on Priors</a></h4>
+                <p>When visual evidence is removed, accuracy drops significantly (-21.27 points); yet VLMs still perform above random chance (25.92%), suggesting substantial reliance on text-only priors and exam heuristics rather than genuine visual grounding.</p>
               </div>
-              <!-- Finding 6 -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHẦN ADDITIONAL FINDINGS - NỀN HỒNG NHẠT -->
+  <section class="section section-additional-findings">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="additional-insight">
+            <h3><i class="fas fa-lightbulb"></i> Additional Findings</h3>
+            <div class="results-grid">
+              <!-- Additional Finding A.1 -->
               <div class="model-result">
-                <h4><a href="#performance-table" class="finding-link"><i class="fas fa-code-branch"></i> Open-Source Gap</a></h4>
-                <p>Open-source VLMs (27.7%) perform substantially worse than closed-source SOTA VLMs (57%), highlighting a significant challenge for publicly available models in understanding Vietnamese multimodal content.</p>
+                <h4><i class="fas fa-image"></i> A.1 Image-Required Questions Are Harder</h4>
+                <p>Questions that truly require image understanding are significantly more challenging than text-sufficient questions, demonstrating the benchmark's focus on visual reasoning.</p>
               </div>
-              <!-- Finding 7 -->
+              <!-- Additional Finding A.2 -->
               <div class="model-result">
-                <h4><a href="#crosslingual-table" class="finding-link"><i class="fas fa-language"></i> Cross-lingual Effects</a></h4>
-                <p>English prompting improves open-source VLMs (+2.9%) but hurts SOTA VLMs (-1.0%), indicating that language-content mismatches affect different types of models in different ways.</p>
+                <h4><i class="fas fa-random"></i> A.2 Answer Shuffling Has Minor Effect</h4>
+                <p>Shuffling answer options has a minor impact on model performance, indicating models are not heavily reliant on answer position biases.</p>
+              </div>
+              <!-- Additional Finding A.3 -->
+              <div class="model-result">
+                <h4><i class="fas fa-sync-alt"></i> A.3 Multiple Runs Show Consistent Rankings</h4>
+                <p>Running evaluations multiple times does not change model rankings or main conclusions, confirming the robustness of the benchmark results.</p>
+              </div>
+              <!-- Additional Finding A.4 -->
+              <div class="model-result">
+                <h4><i class="fas fa-exclamation-triangle"></i> A.4 Non-Thinking VLMs Are Overconfident</h4>
+                <p>Vision-language models without reasoning capabilities tend to be overconfident in their incorrect predictions.</p>
+              </div>
+              <!-- Additional Finding A.5 -->
+              <div class="model-result">
+                <h4><i class="fas fa-check-circle"></i> A.5 SOTA VLMs Follow Answer Format Reliably</h4>
+                <p>State-of-the-art vision-language models consistently follow the required answer format, demonstrating strong instruction-following capabilities.</p>
+              </div>
+              <!-- Additional Finding A.6 -->
+              <div class="model-result">
+                <h4><i class="fas fa-unlock-alt"></i> A.6 Open-Source VLMs Significantly Underperform</h4>
+                <p>Open-source vision-language models show substantial performance gaps compared to proprietary models on VMMU benchmark tasks.</p>
+              </div>
+              <!-- Additional Finding A.7 -->
+              <div class="model-result">
+                <h4><i class="fas fa-font"></i> A.7 Weak OCR Drives Open-Source Failures</h4>
+                <p>The primary weakness of open-source VLMs is their inferior embedded-text OCR capabilities, which significantly impacts overall performance.</p>
               </div>
             </div>
           </div>
@@ -223,7 +270,7 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-full-width">
-  
+
           <div class="content-section">
             <h2><i class="fas fa-cogs icon-large"></i> How We Built ViExam: The Data Curation Pipeline</h2>
             <p>
@@ -231,7 +278,7 @@
             </p>
   
             <div class="research-figure" style="max-width: 100%;">
-              <img src="images/dataset_generator.jpg" alt="ViExam's 3-stage data curation pipeline">
+              <img src="images/data_generator.jpg" alt="VMMU's data curation pipeline">
               <div class="figure-caption">
                 Our three-stage data curation process: (1) Sourcing raw exam PDFs and converting them to images, (2) an automated pipeline to detect and classify questions, and (3) a final manual verification loop by native Vietnamese speakers.
               </div>
@@ -380,7 +427,7 @@ PHẦN NHÚNG TRANG WEB CHECK.HTML -->
             <div class="comparison-table">
               <table>
                 <caption>
-                  Closed-source VLMs (57.74%) underperform human average (64.54%) but significantly outperform open-source VLMs (27.70%). Human performance is based on official Vietnamese national high school graduation exam results.
+                  SOTA proprietary VLMs (68.70%) significantly outperform human average (66.54%) and open-source VLMs (35.53%). Human performance is based on official Vietnamese national high school graduation exam results (VnExpress, 2024).
                 </caption>
                 <thead>
                   <tr>
@@ -396,7 +443,7 @@ PHẦN NHÚNG TRANG WEB CHECK.HTML -->
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Human Performance -->
+                  <!-- Human & Random Baseline -->
                   <tr style="background-color: #f0fdf4;">
                     <td><strong>Human (Average)</strong></td>
                     <td>64.50</td>
@@ -419,189 +466,224 @@ PHẦN NHÚNG TRANG WEB CHECK.HTML -->
                     <td>–</td>
                     <td>99.60</td>
                   </tr>
+                  <tr style="background-color: #f8fafc;">
+                    <td>Random baseline</td>
+                    <td>25.00</td>
+                    <td>24.66</td>
+                    <td>24.38</td>
+                    <td>24.67</td>
+                    <td>25.00</td>
+                    <td>33.24</td>
+                    <td>24.46</td>
+                    <td>25.92</td>
+                  </tr>
+
                   <!-- Open-source VLMs -->
                   <tr>
-                    <td colspan="9" class="table-subtitle">Open-source VLMs</td>
+                    <td colspan="9" class="table-subtitle" style="background-color: #f1f5f9; font-weight: bold; text-align: center;">Open-source VLMs</td>
                   </tr>
                   <tr>
-                    <td>Aya Vision 8B</td>
-                    <td>5.92</td>
-                    <td>2.77</td>
-                    <td>2.98</td>
-                    <td>2.93</td>
-                    <td>2.29</td>
+                    <td>Aya-Vision-8B</td>
+                    <td>10.75</td>
+                    <td>8.03</td>
+                    <td>3.64</td>
+                    <td>3.23</td>
+                    <td>2.49</td>
                     <td>26.98</td>
-                    <td>12.08</td>
-                    <td>7.99</td>
-                  </tr>
-                  <tr>
-                    <td>Aya Vision 32B</td>
-                    <td>7.46</td>
-                    <td>8.86</td>
-                    <td>12.91</td>
-                    <td>17.01</td>
-                    <td>18.71</td>
-                    <td>32.97</td>
-                    <td>23.75</td>
-                    <td>17.38</td>
-                  </tr>
-                  <tr>
-                    <td>Mistral Small 3.2 24B</td>
-                    <td>20.83</td>
                     <td>12.50</td>
-                    <td>20.86</td>
-                    <td>27.86</td>
-                    <td>27.86</td>
-                    <td>39.51</td>
-                    <td>30.42</td>
-                    <td>25.69</td>
+                    <td>9.66</td>
                   </tr>
                   <tr>
-                    <td>Mistral Medium 3</td>
-                    <td>25.88</td>
-                    <td>9.42</td>
-                    <td>20.53</td>
-                    <td>26.98</td>
-                    <td>31.19</td>
-                    <td>46.32</td>
-                    <td>31.25</td>
-                    <td>27.37</td>
-                  </tr>
-                  <tr>
-                    <td>Llama 4 Scout</td>
-                    <td>33.55</td>
-                    <td>11.91</td>
-                    <td>23.51</td>
-                    <td>31.09</td>
-                    <td>52.18</td>
-                    <td>49.86</td>
-                    <td>33.75</td>
-                    <td>33.69</td>
-                  </tr>
-                  <tr>
-                    <td>Llama 4 Maverick</td>
-                    <td>27.41</td>
-                    <td>9.42</td>
-                    <td>18.87</td>
+                    <td>Aya-Vision-32B</td>
+                    <td>12.94</td>
+                    <td>14.40</td>
+                    <td>16.89</td>
+                    <td>17.30</td>
                     <td>21.41</td>
-                    <td>39.50</td>
-                    <td>51.77</td>
-                    <td>24.17</td>
-                    <td>27.51</td>
+                    <td>32.97</td>
+                    <td>24.58</td>
+                    <td>20.07</td>
                   </tr>
                   <tr>
-                    <td>Gemma 3 4B</td>
-                    <td>27.41</td>
-                    <td>17.73</td>
-                    <td>21.19</td>
-                    <td>21.99</td>
-                    <td>27.23</td>
-                    <td>40.33</td>
+                    <td>Gemma-3-4B</td>
+                    <td>26.32</td>
+                    <td>17.45</td>
+                    <td>22.19</td>
+                    <td>22.29</td>
+                    <td>27.65</td>
+                    <td>40.60</td>
                     <td>21.67</td>
-                    <td>25.37</td>
+                    <td>25.45</td>
                   </tr>
                   <tr>
-                    <td>Gemma 3 27B</td>
-                    <td><strong>39.69</strong></td>
-                    <td><strong>29.64</strong></td>
-                    <td>38.41</td>
-                    <td>30.21</td>
-                    <td>47.61</td>
+                    <td>Gemma-3-27B</td>
+                    <td>47.37</td>
+                    <td>30.47</td>
+                    <td>38.74</td>
+                    <td>30.79</td>
+                    <td>47.40</td>
                     <td>43.87</td>
-                    <td>35.42</td>
-                    <td>37.83</td>
+                    <td>35.00</td>
+                    <td>39.09</td>
                   </tr>
                   <tr>
-                    <td>Qwen 2.5 VL 32B</td>
-                    <td>26.75</td>
-                    <td>10.56</td>
-                    <td>17.88</td>
-                    <td>32.26</td>
-                    <td>51.35</td>
+                    <td>Qwen-2.5-VL-32B</td>
+                    <td><strong>61.18</strong></td>
+                    <td>49.17</td>
+                    <td>44.70</td>
+                    <td><strong>42.82</strong></td>
+                    <td><strong>71.31</strong></td>
                     <td><strong>54.50</strong></td>
-                    <td>33.33</td>
-                    <td>32.38</td>
+                    <td>41.25</td>
+                    <td><strong>52.13</strong></td>
                   </tr>
                   <tr>
-                    <td>Qwen 2.5 VL 72B</td>
-                    <td>37.94</td>
-                    <td>19.39</td>
-                    <td><strong>40.40</strong></td>
-                    <td><strong>37.83</strong></td>
-                    <td><strong>60.08</strong></td>
-                    <td>54.22</td>
-                    <td><strong>42.50</strong></td>
-                    <td>41.77</td>
+                    <td>Qwen-2.5-VL-72B</td>
+                    <td>58.33</td>
+                    <td><strong>49.86</strong></td>
+                    <td><strong>48.34</strong></td>
+                    <td>40.47</td>
+                    <td>64.66</td>
+                    <td>53.95</td>
+                    <td><strong>46.67</strong></td>
+                    <td>51.75</td>
                   </tr>
-                  <tr style="background-color: #f8fafc;">
+                  <tr>
+                    <td>Llama-4-Scout</td>
+                    <td>59.65</td>
+                    <td>44.88</td>
+                    <td>45.03</td>
+                    <td>38.71</td>
+                    <td>69.02</td>
+                    <td>49.05</td>
+                    <td>37.08</td>
+                    <td>49.06</td>
+                  </tr>
+                  <tr>
+                    <td>Llama-4-Maverick</td>
+                    <td>42.54</td>
+                    <td>29.36</td>
+                    <td>32.78</td>
+                    <td>27.57</td>
+                    <td>53.22</td>
+                    <td>53.95</td>
+                    <td>29.17</td>
+                    <td>38.37</td>
+                  </tr>
+                  <tr>
+                    <td>Mistral-Small-3.2-24B</td>
+                    <td>34.65</td>
+                    <td>30.28</td>
+                    <td>28.48</td>
+                    <td>28.15</td>
+                    <td>30.98</td>
+                    <td>39.78</td>
+                    <td>30.83</td>
+                    <td>31.88</td>
+                  </tr>
+                  <tr>
+                    <td>Mistral-Medium-3</td>
+                    <td>44.74</td>
+                    <td>36.57</td>
+                    <td>37.75</td>
+                    <td>29.33</td>
+                    <td>36.59</td>
+                    <td>45.78</td>
+                    <td>33.75</td>
+                    <td>37.78</td>
+                  </tr>
+                  <tr style="background-color: #f8fafc; font-weight: bold;">
                     <td>Mean</td>
-                    <td>25.29</td>
-                    <td>13.22</td>
-                    <td>21.75</td>
-                    <td>24.96</td>
-                    <td>35.80</td>
-                    <td>44.03</td>
-                    <td>28.83</td>
-                    <td>27.70</td>
+                    <td>39.85</td>
+                    <td>31.05</td>
+                    <td>31.85</td>
+                    <td>28.06</td>
+                    <td>42.47</td>
+                    <td>44.14</td>
+                    <td>31.25</td>
+                    <td>35.53</td>
                   </tr>
-                  <!-- Closed-source VLMs -->
+
+                  <!-- SOTA Proprietary VLMs -->
                   <tr>
-                    <td colspan="9" class="table-subtitle">Closed-source/SOTA VLMs</td>
-                  </tr>
-                  <tr>
-                    <td>Gemini 2.5 Flash</td>
-                    <td>48.46</td>
-                    <td>37.12</td>
-                    <td>68.54</td>
-                    <td>61.29</td>
-                    <td>85.03</td>
-                    <td>71.12</td>
-                    <td>47.50</td>
-                    <td>59.87</td>
+                    <td colspan="9" class="table-subtitle" style="background-color: #f1f5f9; font-weight: bold; text-align: center;">SOTA proprietary VLMs</td>
                   </tr>
                   <tr>
-                    <td>Sonnet 4.0</td>
-                    <td>50.66</td>
-                    <td>38.50</td>
+                    <td>Gemini-2.5-Flash</td>
+                    <td>82.46</td>
+                    <td>67.04</td>
+                    <td>78.15</td>
+                    <td>63.05</td>
+                    <td>85.24</td>
+                    <td>71.39</td>
+                    <td>52.08</td>
+                    <td>71.34</td>
+                  </tr>
+                  <tr>
+                    <td>Sonnet-4.0</td>
+                    <td>64.25</td>
+                    <td>41.00</td>
                     <td>53.31</td>
                     <td>44.87</td>
                     <td>48.44</td>
                     <td>58.04</td>
                     <td>44.17</td>
-                    <td>48.28</td>
+                    <td>50.58</td>
                   </tr>
                   <tr>
-                    <td>GPT 4.1</td>
-                    <td>41.01</td>
-                    <td>33.80</td>
-                    <td>41.72</td>
-                    <td>43.70</td>
-                    <td>68.81</td>
+                    <td>GPT-4.1</td>
+                    <td>46.27</td>
+                    <td>43.21</td>
+                    <td>44.37</td>
+                    <td>44.87</td>
+                    <td>69.85</td>
                     <td>66.21</td>
-                    <td>45.83</td>
-                    <td>48.73</td>
+                    <td>46.25</td>
+                    <td>51.58</td>
                   </tr>
                   <tr>
                     <td>o3</td>
-                    <td><strong>85.09</strong></td>
-                    <td><strong>68.98</strong></td>
-                    <td><strong>82.78</strong></td>
-                    <td><strong>67.16</strong></td>
-                    <td><strong>88.98</strong></td>
-                    <td><strong>74.66</strong></td>
-                    <td><strong>50.83</strong></td>
-                    <td><strong>74.07</strong></td>
+                    <td>84.87</td>
+                    <td>68.98</td>
+                    <td>82.78</td>
+                    <td>67.16</td>
+                    <td>88.98</td>
+                    <td>74.66</td>
+                    <td>50.42</td>
+                    <td>73.98</td>
                   </tr>
-                  <tr style="background-color: #f8fafc;">
+                  <tr>
+                    <td>Gemini-3.0-Pro</td>
+                    <td><strong>92.54</strong></td>
+                    <td><strong>81.16</strong></td>
+                    <td><strong>91.72</strong></td>
+                    <td><strong>80.94</strong></td>
+                    <td><strong>94.59</strong></td>
+                    <td><strong>91.28</strong></td>
+                    <td><strong>72.08</strong></td>
+                    <td><strong>86.33</strong></td>
+                  </tr>
+                  <tr>
+                    <td>GPT-5.0</td>
+                    <td>91.23</td>
+                    <td>76.45</td>
+                    <td>85.10</td>
+                    <td>72.73</td>
+                    <td>89.40</td>
+                    <td>75.20</td>
+                    <td>58.75</td>
+                    <td>78.41</td>
+                  </tr>
+                  <tr style="background-color: #f8fafc; font-weight: bold;">
                     <td>Mean</td>
-                    <td>56.30</td>
-                    <td>44.60</td>
-                    <td>61.59</td>
-                    <td>54.26</td>
-                    <td>72.81</td>
-                    <td>67.51</td>
-                    <td>47.08</td>
-                    <td>57.74</td>
+                    <td>76.94</td>
+                    <td>62.97</td>
+                    <td>72.57</td>
+                    <td>62.27</td>
+                    <td>79.42</td>
+                    <td>72.80</td>
+                    <td>53.96</td>
+                    <td>68.70</td>
                   </tr>
                 </tbody>
               </table>
